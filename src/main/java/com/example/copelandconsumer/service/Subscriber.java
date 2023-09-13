@@ -9,8 +9,6 @@ import javax.jms.TextMessage;
 
 import org.apache.qpid.jms.JmsConnectionFactory;
 
-import java.io.Console;
-
 public class Subscriber {
     public static void main(String[] args) throws Exception {
 
@@ -24,13 +22,12 @@ public class Subscriber {
 
         MessageConsumer subscriber = session.createConsumer(destination);
 
-        Console c = System.console();
         String response;
         do {
             Message msg = subscriber.receive();
             response = ((TextMessage) msg).getText();
 
-            System.out.println("Received = "+response);
+            System.out.println("Received = " + response);
 
         } while (!response.equalsIgnoreCase("Quit"));
 
